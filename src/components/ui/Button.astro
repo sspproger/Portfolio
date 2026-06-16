@@ -35,15 +35,38 @@ const sizeClasses: Record<Size, string> = {
   lg: 'px-6 py-4 text-base',
 };
 
+function getAutoGoal(href?: string) {
+  if (!href) return undefined;
+  if (href === '/request') return 'cta_process_review_click';
+  if (href === '/demo') return 'demo_view';
+  if (href === '/projects/konkursbstu') return 'project_case_click';
+  if (href.startsWith('tel:')) return 'phone_click';
+  if (href.includes('konkursbstu.ru')) return 'external_case_open';
+  if (href.endsWith('.pdf')) return 'pdf_case_download';
+  return undefined;
+}
+
+const computedGoal = goal || getAutoGoal(href);
+const computedGoalLabel = goalLabel || href || '';
 const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`;
 ---
 
 {href ? (
-  <a href={href} class={classes} data-goal={goal} data-goal-label={goalLabel}>
+  <a
+    href={href}
+    class={classes}
+    data-goal={computedGoal}
+    data-goal-label={computedGoalLabel}
+  >
     {label}
   </a>
 ) : (
-  <button type={type} class={classes} data-goal={goal} data-goal-label={goalLabel}>
+  <button
+    type={type}
+    class={classes}
+    data-goal={computedGoal}
+    data-goal-label={computedGoalLabel}
+  >
     {label}
   </button>
 )}

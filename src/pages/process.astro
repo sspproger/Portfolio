@@ -87,5 +87,17 @@ const prepareItems = [
         </div>
       </Card>
     </section>
+
+    <script is:inline>
+      window.__pendingAnalyticsGoals = window.__pendingAnalyticsGoals || [];
+      window.siteAnalytics?.reachGoal
+        ? window.siteAnalytics.reachGoal('process_page_view', {
+            page: window.location.pathname,
+          })
+        : window.__pendingAnalyticsGoals.push({
+            goal: 'process_page_view',
+            params: { page: window.location.pathname },
+          });
+    </script>
   </main>
 </Layout>

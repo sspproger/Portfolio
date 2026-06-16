@@ -44,5 +44,17 @@ if (!project) {
         secondaryHref="/services"
       />
     </section>
+
+    <script is:inline>
+      window.__pendingAnalyticsGoals = window.__pendingAnalyticsGoals || [];
+      window.siteAnalytics?.reachGoal
+        ? window.siteAnalytics.reachGoal('case_view', {
+            page: window.location.pathname,
+          })
+        : window.__pendingAnalyticsGoals.push({
+            goal: 'case_view',
+            params: { page: window.location.pathname },
+          });
+    </script>
   </main>
 </Layout>

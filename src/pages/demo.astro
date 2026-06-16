@@ -113,5 +113,17 @@ const demoModules = [
         </div>
       </div>
     </section>
+
+    <script is:inline>
+      window.__pendingAnalyticsGoals = window.__pendingAnalyticsGoals || [];
+      window.siteAnalytics?.reachGoal
+        ? window.siteAnalytics.reachGoal('demo_view', {
+            page: window.location.pathname,
+          })
+        : window.__pendingAnalyticsGoals.push({
+            goal: 'demo_view',
+            params: { page: window.location.pathname },
+          });
+    </script>
   </main>
 </Layout>

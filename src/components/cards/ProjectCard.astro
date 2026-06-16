@@ -45,6 +45,8 @@ const { project } = Astro.props as {
           href={project.externalUrl}
           label="Открыть сайт"
           variant="secondary"
+          goal="external_case_open"
+          goalLabel={project.slug}
         />
       )}
     </div>

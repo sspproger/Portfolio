@@ -107,5 +107,17 @@ const afterSubmit = [
         secondaryHref="/projects/konkursbstu"
       />
     </section>
+
+    <script is:inline>
+      window.__pendingAnalyticsGoals = window.__pendingAnalyticsGoals || [];
+      window.siteAnalytics?.reachGoal
+        ? window.siteAnalytics.reachGoal('request_page_view', {
+            page: window.location.pathname,
+          })
+        : window.__pendingAnalyticsGoals.push({
+            goal: 'request_page_view',
+            params: { page: window.location.pathname },
+          });
+    </script>
   </main>
 </Layout>

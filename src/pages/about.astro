@@ -117,5 +117,17 @@ const difference = [
         </Card>
       </div>
     </section>
+
+    <script is:inline>
+      window.__pendingAnalyticsGoals = window.__pendingAnalyticsGoals || [];
+      window.siteAnalytics?.reachGoal
+        ? window.siteAnalytics.reachGoal('about_page_view', {
+            page: window.location.pathname,
+          })
+        : window.__pendingAnalyticsGoals.push({
+            goal: 'about_page_view',
+            params: { page: window.location.pathname },
+          });
+    </script>
   </main>
 </Layout>
