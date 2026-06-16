@@ -1,25 +1,48 @@
 ---
 import Layout from '../../components/layout/Layout.astro';
+import CTASection from '../../components/ui/CTASection.astro';
+
+import CaseHero from '../../components/case/CaseHero.astro';
+import CaseSummary from '../../components/case/CaseSummary.astro';
+import CaseProblem from '../../components/case/CaseProblem.astro';
+import CaseModules from '../../components/case/CaseModules.astro';
+import CaseScreenshots from '../../components/case/CaseScreenshots.astro';
+import CaseArchitecture from '../../components/case/CaseArchitecture.astro';
+import CaseResult from '../../components/case/CaseResult.astro';
+import CaseApplications from '../../components/case/CaseApplications.astro';
+
+import { getProjectBySlug } from '../../data/projects';
+
+const project = getProjectBySlug('konkursbstu');
+
+if (!project) {
+  throw new Error('Проект konkursbstu не найден в src/data/projects.ts');
+}
 ---
 
-<Layout title="Кейс konkursbstu.ru — автоматизация конкурсов и конференции">
-  <main class="mx-auto max-w-6xl px-4 py-16">
-    <p class="text-sm font-semibold text-blue-600">Кейс автоматизации</p>
+<Layout
+  title="Кейс konkursbstu.ru — автоматизация конкурсов, конференции, заявок и рассылок"
+  description="Кейс цифровой системы для автоматизации заявок, файлов, админ-панели, документов, приглашений и рассылок для конкурса и конференции."
+>
+  <main>
+    <CaseHero project={project} />
+    <CaseSummary project={project} />
+    <CaseProblem />
+    <CaseModules project={project} />
+    <CaseScreenshots />
+    <CaseArchitecture />
+    <CaseResult />
+    <CaseApplications />
 
-    <h1 class="mt-3 text-4xl font-bold text-slate-900">
-      konkursbstu.ru — цифровая система для автоматизации конкурсов, конференции, приглашений и рассылок
-    </h1>
-
-    <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-      Кейс будет описывать публичные формы, заявки, загрузку файлов,
-      базу данных, административную панель, документы, статусы и рассылки.
-    </p>
-
-    <a
-      href="/request"
-      class="mt-8 inline-flex rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700"
-    >
-      Хочу похожую систему
-    </a>
+    <section class="mx-auto max-w-6xl px-4 pb-20">
+      <CTASection
+        title="Хотите похожую систему под свой процесс?"
+        description="Опишите, какие заявки, данные, документы, файлы, статусы или уведомления нужно автоматизировать. Первый шаг — бесплатный разбор процесса."
+        primaryLabel="Хочу похожую систему"
+        primaryHref="/request"
+        secondaryLabel="Смотреть услуги"
+        secondaryHref="/services"
+      />
+    </section>
   </main>
 </Layout>

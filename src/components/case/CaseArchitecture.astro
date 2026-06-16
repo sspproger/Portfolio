@@ -1,0 +1,39 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+
+const architecture = [
+  'Пользователь',
+  'Публичная форма',
+  'Serverless API',
+  'База данных',
+  'Файловое хранилище',
+  'Админ-панель',
+  'Документы / рассылки / уведомления',
+];
+---
+
+<section class="mx-auto max-w-6xl px-4 pb-16">
+  <SectionHeader
+    eyebrow="Архитектура"
+    title="Как устроена логика системы"
+    description="Это визуальное описание архитектуры кейса. Здесь не подключаются реальные API — схема нужна для понимания процесса."
+  />
+
+  <div class="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div class="mx-auto max-w-xl">
+      {architecture.map((item, index) => (
+        <div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center font-semibold text-slate-900">
+            {item}
+          </div>
+
+          {index < architecture.length - 1 && (
+            <div class="flex justify-center py-3 text-2xl font-bold text-blue-600">
+              ↓
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

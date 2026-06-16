@@ -1,0 +1,60 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import ScreenshotFrame from '../ui/ScreenshotFrame.astro';
+
+const screenshots = [
+  {
+    alt: 'Главная страница портала konkursbstu.ru',
+    caption: 'Главная страница портала',
+    futurePath: '/screenshots/konkursbstu/home.webp',
+  },
+  {
+    alt: 'Форма заявки участника',
+    caption: 'Форма заявки',
+    futurePath: '/screenshots/konkursbstu/application-form.webp',
+  },
+  {
+    alt: 'Форма загрузки материалов',
+    caption: 'Форма загрузки материалов',
+    futurePath: '/screenshots/konkursbstu/files.webp',
+  },
+  {
+    alt: 'Административная панель',
+    caption: 'Админ-панель',
+    futurePath: '/screenshots/konkursbstu/admin-panel.webp',
+  },
+  {
+    alt: 'Документы и приглашения',
+    caption: 'Документы',
+    futurePath: '/screenshots/konkursbstu/documents.webp',
+  },
+  {
+    alt: 'Рассылки и уведомления',
+    caption: 'Рассылки',
+    futurePath: '/screenshots/konkursbstu/mailing.webp',
+  },
+];
+---
+
+<section class="mx-auto max-w-6xl px-4 pb-16">
+  <SectionHeader
+    eyebrow="Интерфейсы"
+    title="Скриншоты системы"
+    description="Пока изображения можно добавить позже. Блок уже подготовлен под демонстрацию публичной части, форм, админ-панели, документов и рассылок."
+  />
+
+  <div class="mt-8 grid gap-6 md:grid-cols-2">
+    {screenshots.map((screenshot) => (
+      <div>
+        <ScreenshotFrame
+          alt={screenshot.alt}
+          caption={screenshot.caption}
+        />
+
+        <p class="mt-2 text-xs text-slate-500">
+          Будущий путь изображения: {screenshot.futurePath}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
