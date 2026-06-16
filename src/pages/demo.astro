@@ -1,0 +1,117 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import LeadMagnetForm from '../components/forms/LeadMagnetForm.astro';
+
+const scheme = [
+  'Пользователь заполняет форму',
+  'Данные попадают в систему',
+  'Администратор видит заявку',
+  'Меняет статус',
+  'Формируются документы',
+  'Отправляются уведомления',
+];
+
+const demoModules = [
+  'форма заявки',
+  'база данных',
+  'админ-панель',
+  'статусы',
+  'документы',
+  'уведомления',
+];
+---
+
+<Layout
+  title="Демо цифровой системы автоматизации"
+  description="Демонстрация логики цифровой системы: форма, заявка, админ-панель, статусы, документы и уведомления."
+>
+  <main>
+    <section class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <div class="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+        <div>
+          <p class="text-sm font-semibold text-blue-600">
+            Демо
+          </p>
+
+          <h1 class="mt-3 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+            Демо цифровой системы автоматизации
+          </h1>
+
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            Демо показывает типовую логику: форма, заявка, база данных,
+            админ-панель, статусы, документы и уведомления.
+          </p>
+
+          <Card className="mt-8">
+            <h2 class="text-2xl font-bold text-slate-900">
+              Визуальная схема
+            </h2>
+
+            <div class="mt-6">
+              {scheme.map((item, index) => (
+                <div>
+                  <div class="rounded-2xl bg-slate-50 p-4 text-center font-semibold text-slate-800">
+                    {item}
+                  </div>
+
+                  {index < scheme.length - 1 && (
+                    <div class="py-3 text-center text-2xl font-bold text-blue-600">
+                      ↓
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+
+        <LeadMagnetForm
+          title="Запросить демонстрацию похожей системы"
+          description="Оставьте контакт, и можно будет обсудить, как похожая логика применяется к вашему процессу."
+          buttonLabel="Запросить демо"
+          leadMagnetSlug="demo-system"
+        />
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-4 pb-16">
+      <h2 class="text-3xl font-bold tracking-tight text-slate-900">
+        Что может входить в демо
+      </h2>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {demoModules.map((module) => (
+          <Card>
+            <p class="text-xl font-bold text-slate-900">
+              {module}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-4 pb-20">
+      <div class="rounded-3xl border border-blue-100 bg-blue-50 p-8 md:p-10">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900">
+          Хотите такую систему под свой процесс?
+        </h2>
+
+        <p class="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
+          Опишите процесс, который нужно автоматизировать. Первый шаг —
+          определить MVP и состав модулей.
+        </p>
+
+        <div class="mt-8">
+          <Button
+            href="/request"
+            label="Получить разбор процесса"
+            variant="primary"
+            size="lg"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,91 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import { processSteps } from '../data/process';
+
+const prepareItems = [
+  'краткое описание процесса',
+  'кто участвует',
+  'какие данные собираются',
+  'какие файлы используются',
+  'какие документы формируются',
+  'где чаще всего возникают ручные действия',
+];
+---
+
+<Layout
+  title="Как проходит работа над системой автоматизации"
+  description="Этапы разработки цифровой системы: разбор процесса, MVP, интерфейсы, база данных, документы, уведомления и запуск."
+>
+  <main>
+    <section class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <p class="text-sm font-semibold text-blue-600">
+        Процесс работы
+      </p>
+
+      <h1 class="mt-3 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+        Как проходит работа
+      </h1>
+
+      <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
+        Работа начинается с разбора процесса, а не с программирования. Сначала
+        нужно понять, какие действия повторяются и что можно автоматизировать.
+      </p>
+
+      <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {processSteps.map((step, index) => (
+          <Card>
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
+              {index + 1}
+            </div>
+
+            <h2 class="mt-5 text-xl font-bold text-slate-900">
+              {step.title}
+            </h2>
+
+            <p class="mt-3 text-sm leading-6 text-slate-600">
+              {step.description}
+            </p>
+
+            <p class="mt-4 text-sm font-semibold text-slate-900">
+              Результат: {step.result}
+            </p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-4 pb-16">
+      <Card>
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900">
+          Что нужно подготовить перед разговором
+        </h2>
+
+        <div class="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          {prepareItems.map((item) => (
+            <div class="rounded-2xl bg-slate-50 p-4 text-sm font-semibold text-slate-700">
+              {item}
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button
+            href="/request"
+            label="Получить разбор процесса"
+            variant="primary"
+            size="lg"
+          />
+
+          <Button
+            href="/projects/konkursbstu"
+            label="Смотреть кейс"
+            variant="secondary"
+            size="lg"
+          />
+        </div>
+      </Card>
+    </section>
+  </main>
+</Layout>

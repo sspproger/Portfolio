@@ -1,0 +1,94 @@
+---
+import { contacts } from '../../data/contacts';
+---
+
+<form
+  data-form="demo"
+  class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+>
+  <input type="hidden" name="form_type" value="lead" />
+  <input type="hidden" name="utm_source" />
+  <input type="hidden" name="utm_medium" />
+  <input type="hidden" name="utm_campaign" />
+  <input type="hidden" name="utm_content" />
+  <input type="hidden" name="utm_term" />
+
+  <div>
+    <label for="lead-name" class="text-sm font-semibold text-slate-900">
+      Имя
+    </label>
+    <input
+      id="lead-name"
+      name="name"
+      type="text"
+      required
+      class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+      placeholder="Как к вам обращаться"
+    />
+  </div>
+
+  <div class="mt-4">
+    <label for="lead-phone" class="text-sm font-semibold text-slate-900">
+      Телефон
+    </label>
+    <input
+      id="lead-phone"
+      name="phone"
+      type="tel"
+      required
+      class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+      placeholder="+7..."
+    />
+  </div>
+
+  <div class="mt-4">
+    <label for="lead-email" class="text-sm font-semibold text-slate-900">
+      Email
+    </label>
+    <input
+      id="lead-email"
+      name="email"
+      type="email"
+      class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+      placeholder="mail@example.ru"
+    />
+  </div>
+
+  <div class="mt-4">
+    <label for="lead-message" class="text-sm font-semibold text-slate-900">
+      Кратко опишите процесс
+    </label>
+    <textarea
+      id="lead-message"
+      name="message"
+      rows="5"
+      required
+      class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+      placeholder="Например: заявки сейчас приходят в почту, файлы хранятся отдельно, статусы ведутся в Excel..."
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="mt-6 w-full rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+  >
+    Отправить заявку
+  </button>
+
+  <p class="mt-4 text-sm leading-6 text-slate-500">
+    Форма пока работает в демо-режиме. На следующем этапе будет подключена
+    отправка в Telegram, email или CRM.
+  </p>
+
+  <div
+    data-form-success
+    hidden
+    class="mt-5 rounded-2xl border border-green-200 bg-green-50 p-4 text-sm leading-6 text-slate-700"
+  >
+    Спасибо! Заявка зафиксирована в демо-режиме. Для быстрой связи можно
+    позвонить по телефону
+    <a href={contacts.phoneHref} class="font-semibold text-blue-600">
+      {contacts.phone}
+    </a>.
+  </div>
+</form>

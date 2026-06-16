@@ -1,0 +1,206 @@
+---
+import { contacts } from '../../data/contacts';
+
+const currentPlaces = [
+  'Excel',
+  'почта',
+  'мессенджеры',
+  'бумажные документы',
+  'другая система',
+  'пока не формализован',
+];
+
+const modules = [
+  'форма заявки',
+  'база данных',
+  'админ-панель',
+  'личный кабинет',
+  'документы',
+  'рассылки',
+  'загрузка файлов',
+  'статусы',
+  'отчётность',
+];
+
+const terms = [
+  'как можно быстрее',
+  '2–4 недели',
+  '1–2 месяца',
+  'пока нужна оценка',
+];
+---
+
+<form
+  data-form="demo"
+  class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+>
+  <input type="hidden" name="form_type" value="brief" />
+  <input type="hidden" name="utm_source" />
+  <input type="hidden" name="utm_medium" />
+  <input type="hidden" name="utm_campaign" />
+  <input type="hidden" name="utm_content" />
+  <input type="hidden" name="utm_term" />
+
+  <div class="grid gap-4 md:grid-cols-2">
+    <div>
+      <label for="brief-name" class="text-sm font-semibold text-slate-900">
+        Имя
+      </label>
+      <input
+        id="brief-name"
+        name="name"
+        type="text"
+        required
+        class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+        placeholder="Ваше имя"
+      />
+    </div>
+
+    <div>
+      <label for="brief-phone" class="text-sm font-semibold text-slate-900">
+        Телефон
+      </label>
+      <input
+        id="brief-phone"
+        name="phone"
+        type="tel"
+        required
+        class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+        placeholder="+7..."
+      />
+    </div>
+  </div>
+
+  <div class="mt-4 grid gap-4 md:grid-cols-2">
+    <div>
+      <label for="brief-email" class="text-sm font-semibold text-slate-900">
+        Email
+      </label>
+      <input
+        id="brief-email"
+        name="email"
+        type="email"
+        class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+        placeholder="mail@example.ru"
+      />
+    </div>
+
+    <div>
+      <label for="brief-company" class="text-sm font-semibold text-slate-900">
+        Организация
+      </label>
+      <input
+        id="brief-company"
+        name="company"
+        type="text"
+        class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+        placeholder="Название организации"
+      />
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <label for="brief-process" class="text-sm font-semibold text-slate-900">
+      Какой процесс нужно автоматизировать?
+    </label>
+    <textarea
+      id="brief-process"
+      name="process"
+      rows="5"
+      required
+      class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+      placeholder="Опишите, как процесс работает сейчас и что хотелось бы упростить."
+    ></textarea>
+  </div>
+
+  <fieldset class="mt-5">
+    <legend class="text-sm font-semibold text-slate-900">
+      Где процесс сейчас ведётся?
+    </legend>
+
+    <div class="mt-3 grid gap-2 md:grid-cols-2">
+      {currentPlaces.map((item) => (
+        <label class="flex gap-2 rounded-xl bg-slate-50 p-3 text-sm text-slate-700">
+          <input type="checkbox" name="current_place" value={item} />
+          <span>{item}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <fieldset class="mt-5">
+    <legend class="text-sm font-semibold text-slate-900">
+      Какие модули могут понадобиться?
+    </legend>
+
+    <div class="mt-3 grid gap-2 md:grid-cols-2">
+      {modules.map((item) => (
+        <label class="flex gap-2 rounded-xl bg-slate-50 p-3 text-sm text-slate-700">
+          <input type="checkbox" name="modules" value={item} />
+          <span>{item}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <div class="mt-5">
+    <label for="brief-term" class="text-sm font-semibold text-slate-900">
+      Желаемый срок запуска
+    </label>
+
+    <select
+      id="brief-term"
+      name="term"
+      class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+    >
+      {terms.map((term) => (
+        <option value={term}>{term}</option>
+      ))}
+    </select>
+  </div>
+
+  <div class="mt-4">
+    <label for="brief-comment" class="text-sm font-semibold text-slate-900">
+      Комментарий
+    </label>
+    <textarea
+      id="brief-comment"
+      name="comment"
+      rows="4"
+      class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-blue-600"
+      placeholder="Дополнительные детали, ссылки, ограничения, пожелания."
+    ></textarea>
+  </div>
+
+  <label class="mt-5 flex gap-3 text-sm leading-6 text-slate-600">
+    <input type="checkbox" name="demo_consent" required class="mt-1" />
+    <span>
+      Я понимаю, что форма пока работает в демо-режиме, и данные не отправляются
+      на реальный backend.
+    </span>
+  </label>
+
+  <button
+    type="submit"
+    class="mt-6 w-full rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-700"
+  >
+    Отправить описание процесса
+  </button>
+
+  <p class="mt-4 text-sm leading-6 text-slate-500">
+    Форма пока работает в демо-режиме. На следующем этапе будет подключена
+    отправка в Telegram, email или CRM.
+  </p>
+
+  <div
+    data-form-success
+    hidden
+    class="mt-5 rounded-2xl border border-green-200 bg-green-50 p-4 text-sm leading-6 text-slate-700"
+  >
+    Спасибо! Описание процесса зафиксировано в демо-режиме. Для быстрой связи
+    можно позвонить по телефону
+    <a href={contacts.phoneHref} class="font-semibold text-blue-600">
+      {contacts.phone}
+    </a>.
+  </div>
+</form>
