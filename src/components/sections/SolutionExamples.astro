@@ -1,0 +1,76 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import Card from '../ui/Card.astro';
+
+const examples = [
+  {
+    title: 'Система приёма заявок',
+    description: 'Форма, база данных, статусы, файлы, уведомления и админ-панель.',
+    href: '/services/application-automation',
+  },
+  {
+    title: 'Портал конкурса или конференции',
+    description: 'Заявки, материалы, участники, документы, приглашения и рассылки.',
+    href: '/services/event-portal',
+  },
+  {
+    title: 'Админ-панель для заявок и файлов',
+    description: 'Таблицы, фильтры, карточки записей, статусы и управление данными.',
+    href: '/services/admin-panels',
+  },
+  {
+    title: 'Генерация документов',
+    description: 'Автоматическое создание PDF/DOCX по данным из форм и базы.',
+    href: '/services/document-generation',
+  },
+  {
+    title: 'Личный кабинет участника или клиента',
+    description: 'Профиль, заявки, статусы, файлы, документы и уведомления.',
+    href: '/services/user-cabinets',
+  },
+  {
+    title: 'Система уведомлений',
+    description: 'Email, Telegram или другие сообщения по событиям процесса.',
+    href: '/services/notifications',
+  },
+  {
+    title: 'Перенос Excel-процесса в веб-систему',
+    description: 'Формы, база данных, импорт, экспорт, фильтры и единое хранение.',
+    href: '/services/excel-to-web-system',
+  },
+  {
+    title: 'Внутренняя workflow-система',
+    description: 'Этапы, роли, статусы, согласования, уведомления и отчётность.',
+    href: '/services/workflow-system',
+  },
+];
+---
+
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <SectionHeader
+    eyebrow="Примеры решений"
+    title="Можно начать с небольшого MVP и постепенно расширять систему"
+    description="Не обязательно сразу делать большую платформу. Часто достаточно первого полезного модуля: формы, базы, админ-панели или автоматической генерации документов."
+  />
+
+  <div class="mt-10 grid gap-4 md:grid-cols-2">
+    {examples.map((example) => (
+      <a
+        href={example.href}
+        class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+      >
+        <h3 class="text-xl font-bold text-slate-900">
+          {example.title}
+        </h3>
+
+        <p class="mt-3 text-sm leading-6 text-slate-600">
+          {example.description}
+        </p>
+
+        <span class="mt-5 inline-flex text-sm font-semibold text-blue-600">
+          Подробнее →
+        </span>
+      </a>
+    ))}
+  </div>
+</section>

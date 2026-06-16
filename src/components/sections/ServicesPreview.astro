@@ -1,0 +1,36 @@
+---
+import { services } from '../../data/services';
+import ServiceCard from '../cards/ServiceCard.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+
+const keySlugs = [
+  'business-process-automation',
+  'application-automation',
+  'custom-web-systems',
+  'admin-panels',
+  'document-generation',
+  'event-portal',
+];
+
+const keyServices = services.filter((service) => keySlugs.includes(service.slug));
+---
+
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <SectionHeader
+      eyebrow="Услуги"
+      title="Что можно разработать"
+      description="Набор услуг сформирован вокруг автоматизации процессов: от заявок и документов до внутренних цифровых систем."
+    />
+
+    <a href="/services" class="font-semibold text-blue-600 hover:text-blue-700">
+      Все услуги →
+    </a>
+  </div>
+
+  <div class="mt-10 grid gap-6 md:grid-cols-2">
+    {keyServices.map((service) => (
+      <ServiceCard service={service} />
+    ))}
+  </div>
+</section>

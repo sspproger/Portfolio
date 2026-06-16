@@ -1,0 +1,42 @@
+---
+import { leadMagnets } from '../../data/leadMagnets';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Button from '../ui/Button.astro';
+import Card from '../ui/Card.astro';
+---
+
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <SectionHeader
+    eyebrow="Лид-магниты"
+    title="Начните с бесплатного материала или разбора процесса"
+    description="Можно посмотреть кейс, получить чек-лист, оценить MVP или запросить демонстрацию похожей системы."
+  />
+
+  <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {leadMagnets.map((item) => (
+      <Card className="flex h-full flex-col">
+        <p class="text-sm font-semibold text-blue-600">
+          {item.type}
+        </p>
+
+        <h3 class="mt-3 text-xl font-bold text-slate-900">
+          {item.title}
+        </h3>
+
+        <p class="mt-3 text-sm leading-6 text-slate-600">
+          {item.description}
+        </p>
+
+        <div class="mt-auto pt-6">
+          <Button
+            href={item.href}
+            label={item.buttonLabel}
+            variant="secondary"
+            goal={item.goal}
+            goalLabel={item.slug}
+          />
+        </div>
+      </Card>
+    ))}
+  </div>
+</section>

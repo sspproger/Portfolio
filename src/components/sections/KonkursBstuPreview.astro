@@ -1,0 +1,63 @@
+---
+import Button from '../ui/Button.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+
+const automated = [
+  'публичные формы',
+  'заявки',
+  'файлы',
+  'база данных',
+  'админ-панель',
+  'статусы',
+  'документы',
+  'приглашения',
+  'рассылки',
+  'работа оргкомитета',
+];
+---
+
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <div class="rounded-3xl border border-blue-100 bg-blue-50 p-8 md:p-10">
+    <div class="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+      <div>
+        <SectionHeader
+          eyebrow="Реализованный кейс"
+          title="konkursbstu.ru — цифровая система для конкурса и конференции"
+          description="Это пример автоматизации процесса с заявками, файлами, административной панелью, статусами, документами, приглашениями и рассылками."
+        />
+
+        <p class="mt-5 text-sm leading-6 text-slate-600">
+          Кейс показывает подход к разработке цифровых систем. Это один пример,
+          а не единственное направление работы: такую же логику можно применить
+          к заявкам, документам, внутренним сервисам, личным кабинетам и workflow.
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button
+            href="/projects/konkursbstu"
+            label="Смотреть кейс"
+            variant="primary"
+            size="lg"
+          />
+
+          <Button
+            href="/request"
+            label="Хочу похожую систему"
+            variant="secondary"
+            size="lg"
+            goal="cta_process_review_click"
+            goalLabel="home_case_preview"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-2">
+        {automated.map((item) => (
+          <div class="rounded-2xl bg-white p-4 text-sm font-semibold text-slate-700 shadow-sm">
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

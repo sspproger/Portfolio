@@ -1,0 +1,21 @@
+---
+import { projects } from '../../data/projects';
+import ProjectCard from '../cards/ProjectCard.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+
+const firstProject = projects[0];
+---
+
+{firstProject && (
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <SectionHeader
+      eyebrow="Проекты"
+      title="Реализованный пример автоматизации"
+      description="Кейс показывает подход к автоматизации, который можно применить и к другим процессам: заявкам, документам, файлам, рассылкам, статусам и внутренним сервисам."
+    />
+
+    <div class="mt-10">
+      <ProjectCard project={firstProject} />
+    </div>
+  </section>
+)}

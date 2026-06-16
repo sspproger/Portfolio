@@ -1,0 +1,59 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+
+const before = [
+  'заявки в почте, таблицах и мессенджерах',
+  'файлы хранятся разрозненно',
+  'статусы проверяются вручную',
+  'документы готовятся вручную',
+  'рассылки требуют времени',
+  'сложно понять, кто за что отвечает',
+];
+
+const after = [
+  'заявки в единой системе',
+  'файлы связаны с заявками',
+  'статусы видны в админ-панели',
+  'документы формируются по данным',
+  'уведомления отправляются автоматически',
+  'процесс становится прозрачным',
+];
+---
+
+<section class="mx-auto max-w-6xl px-4 py-16">
+  <SectionHeader
+    eyebrow="До / после"
+    title="Что меняется после автоматизации"
+    description="Цель автоматизации — не просто создать интерфейс, а сделать процесс понятным, управляемым и менее зависимым от ручной работы."
+  />
+
+  <div class="mt-10 grid gap-6 lg:grid-cols-2">
+    <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <h3 class="text-2xl font-bold text-slate-900">
+        До автоматизации
+      </h3>
+
+      <div class="mt-6 grid gap-3">
+        {before.map((item) => (
+          <div class="rounded-2xl bg-slate-50 p-4 text-sm font-medium text-slate-600">
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="rounded-3xl border border-green-100 bg-white p-6 shadow-sm">
+      <h3 class="text-2xl font-bold text-slate-900">
+        После автоматизации
+      </h3>
+
+      <div class="mt-6 grid gap-3">
+        {after.map((item) => (
+          <div class="rounded-2xl bg-green-50 p-4 text-sm font-medium text-slate-700">
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
