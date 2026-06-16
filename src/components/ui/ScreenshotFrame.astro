@@ -1,0 +1,27 @@
+---
+const {
+  src,
+  alt,
+  caption,
+} = Astro.props as {
+  src?: string;
+  alt: string;
+  caption?: string;
+};
+---
+
+<figure class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+  {src ? (
+    <img src={src} alt={alt} class="h-auto w-full object-cover" loading="lazy" />
+  ) : (
+    <div class="flex aspect-video items-center justify-center bg-slate-100 p-6 text-center text-sm text-slate-500">
+      Скриншот будет добавлен позже
+    </div>
+  )}
+
+  {caption && (
+    <figcaption class="border-t border-slate-200 px-5 py-3 text-sm text-slate-600">
+      {caption}
+    </figcaption>
+  )}
+</figure>
