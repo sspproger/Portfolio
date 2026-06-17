@@ -3,7 +3,15 @@ import Layout from '../components/layout/Layout.astro';
 import Button from '../components/ui/Button.astro';
 import Card from '../components/ui/Card.astro';
 import LeadForm from '../components/forms/LeadForm.astro';
+
 import { contacts } from '../data/contacts';
+import { getSEO } from '../data/seo';
+import {
+  createBreadcrumbSchema,
+  createPersonSchema,
+} from '../data/schema';
+
+const pageSeo = getSEO('/contacts')!;
 
 const topics = [
   'автоматизация заявок',
@@ -18,8 +26,16 @@ const topics = [
 ---
 
 <Layout
-  title="Контакты для обсуждения автоматизации процесса"
-  description="Контакты для связи и обсуждения разработки цифровой системы автоматизации: заявки, документы, файлы, админ-панели и workflow."
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalPath="/contacts"
+  schema={[
+    createPersonSchema(),
+    createBreadcrumbSchema([
+      { name: 'Главная', url: '/' },
+      { name: 'Контакты', url: '/contacts' },
+    ]),
+  ]}
 >
   <main>
     <section class="mx-auto max-w-6xl px-4 py-16 md:py-20">

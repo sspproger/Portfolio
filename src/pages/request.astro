@@ -3,7 +3,12 @@ import Layout from '../components/layout/Layout.astro';
 import BriefForm from '../components/forms/BriefForm.astro';
 import Card from '../components/ui/Card.astro';
 import CTASection from '../components/ui/CTASection.astro';
+
 import { contacts } from '../data/contacts';
+import { getSEO } from '../data/seo';
+import { createBreadcrumbSchema } from '../data/schema';
+
+const pageSeo = getSEO('/request')!;
 
 const describeItems = [
   'где сейчас ведётся процесс',
@@ -24,8 +29,13 @@ const afterSubmit = [
 ---
 
 <Layout
-  title="Заявка на автоматизацию процесса"
-  description="Опишите процесс, который нужно автоматизировать: заявки, документы, файлы, статусы, админ-панели, рассылки или workflow."
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalPath="/request"
+  schema={createBreadcrumbSchema([
+    { name: 'Главная', url: '/' },
+    { name: 'Заявка', url: '/request' },
+  ])}
 >
   <main>
     <section class="mx-auto max-w-6xl px-4 py-16 md:py-20">

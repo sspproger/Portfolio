@@ -2,7 +2,12 @@
 import Layout from '../components/layout/Layout.astro';
 import Button from '../components/ui/Button.astro';
 import Card from '../components/ui/Card.astro';
+
 import { processSteps } from '../data/process';
+import { getSEO } from '../data/seo';
+import { createBreadcrumbSchema } from '../data/schema';
+
+const pageSeo = getSEO('/process')!;
 
 const prepareItems = [
   'краткое описание процесса',
@@ -15,8 +20,13 @@ const prepareItems = [
 ---
 
 <Layout
-  title="Как проходит работа над системой автоматизации"
-  description="Этапы разработки цифровой системы: разбор процесса, MVP, интерфейсы, база данных, документы, уведомления и запуск."
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalPath="/process"
+  schema={createBreadcrumbSchema([
+    { name: 'Главная', url: '/' },
+    { name: 'Как проходит работа', url: '/process' },
+  ])}
 >
   <main>
     <section class="mx-auto max-w-6xl px-4 py-16 md:py-20">

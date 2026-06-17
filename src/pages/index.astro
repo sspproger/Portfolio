@@ -14,11 +14,29 @@ import DemoBlock from '../components/sections/DemoBlock.astro';
 import LeadMagnetBlock from '../components/sections/LeadMagnetBlock.astro';
 import FAQSection from '../components/sections/FAQSection.astro';
 import FinalCTA from '../components/sections/FinalCTA.astro';
+
+import { getSEO } from '../data/seo';
+import { faq } from '../data/faq';
+import {
+  createFAQSchema,
+  createPersonSchema,
+  createServiceSchema,
+  createWebSiteSchema,
+} from '../data/schema';
+
+const pageSeo = getSEO('/')!;
 ---
 
 <Layout
-  title="Автоматизация процессов и цифровые системы для организаций"
-  description="Разработка цифровых систем для автоматизации заявок, документов, файлов, статусов, админ-панелей, личных кабинетов, рассылок и workflow-решений."
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalPath="/"
+  schema={[
+    createWebSiteSchema(),
+    createPersonSchema(),
+    createServiceSchema(),
+    createFAQSchema(faq.slice(0, 6)),
+  ]}
 >
   <main>
     <HomeHero />

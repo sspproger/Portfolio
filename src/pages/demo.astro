@@ -4,6 +4,11 @@ import Button from '../components/ui/Button.astro';
 import Card from '../components/ui/Card.astro';
 import LeadMagnetForm from '../components/forms/LeadMagnetForm.astro';
 
+import { getSEO } from '../data/seo';
+import { createBreadcrumbSchema } from '../data/schema';
+
+const pageSeo = getSEO('/demo')!;
+
 const scheme = [
   'Пользователь заполняет форму',
   'Данные попадают в систему',
@@ -24,8 +29,13 @@ const demoModules = [
 ---
 
 <Layout
-  title="Демо цифровой системы автоматизации"
-  description="Демонстрация логики цифровой системы: форма, заявка, админ-панель, статусы, документы и уведомления."
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalPath="/demo"
+  schema={createBreadcrumbSchema([
+    { name: 'Главная', url: '/' },
+    { name: 'Демо', url: '/demo' },
+  ])}
 >
   <main>
     <section class="mx-auto max-w-6xl px-4 py-16 md:py-20">

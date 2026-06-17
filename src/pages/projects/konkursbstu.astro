@@ -12,8 +12,14 @@ import CaseResult from '../../components/case/CaseResult.astro';
 import CaseApplications from '../../components/case/CaseApplications.astro';
 
 import { getProjectBySlug } from '../../data/projects';
+import { getSEO } from '../../data/seo';
+import {
+  createBreadcrumbSchema,
+  createCaseStudySchema,
+} from '../../data/schema';
 
 const project = getProjectBySlug('konkursbstu');
+const pageSeo = getSEO('/projects/konkursbstu')!;
 
 if (!project) {
   throw new Error('Проект konkursbstu не найден в src/data/projects.ts');
@@ -21,8 +27,17 @@ if (!project) {
 ---
 
 <Layout
-  title="Кейс konkursbstu.ru — автоматизация конкурсов, конференции, заявок и рассылок"
-  description="Кейс цифровой системы для автоматизации заявок, файлов, админ-панели, документов, приглашений и рассылок для конкурса и конференции."
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalPath="/projects/konkursbstu"
+  schema={[
+    createCaseStudySchema(),
+    createBreadcrumbSchema([
+      { name: 'Главная', url: '/' },
+      { name: 'Проекты', url: '/projects' },
+      { name: 'Кейс konkursbstu.ru', url: '/projects/konkursbstu' },
+    ]),
+  ]}
 >
   <main>
     <CaseHero project={project} />
