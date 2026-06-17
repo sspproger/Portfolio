@@ -1,0 +1,15 @@
+---
+const { schema } = Astro.props as {
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+---
+
+{schemas.length > 0 && (
+  <>
+    {schemas.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
+  </>
+)}
