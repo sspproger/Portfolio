@@ -1,0 +1,72 @@
+openapi: "3.0.0"
+
+info:
+  title: automation-portfolio-api
+  version: "1.0.0"
+
+# Важно:
+# 1. Замените <LEAD_FUNCTION_ID>, <BRIEF_FUNCTION_ID>, <LEAD_MAGNET_FUNCTION_ID>
+#    на реальные ID Cloud Functions после их создания.
+# 2. Для продакшена лучше ограничить CORS конкретным доменом сайта.
+# 3. Здесь CORS открыт для удобной первичной проверки.
+
+x-yc-apigateway:
+  cors:
+    origin: "*"
+    methods: "POST,OPTIONS"
+    allowedHeaders: "Content-Type,Authorization"
+
+paths:
+  /lead:
+    post:
+      operationId: sendLead
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id: <LEAD_FUNCTION_ID>
+    options:
+      operationId: optionsLead
+      x-yc-apigateway-integration:
+        type: dummy
+        http_code: 204
+        http_headers:
+          Access-Control-Allow-Origin: "*"
+          Access-Control-Allow-Methods: "POST, OPTIONS"
+          Access-Control-Allow-Headers: "Content-Type, Authorization"
+        content:
+          text/plain: ""
+
+  /brief:
+    post:
+      operationId: sendBrief
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id: <BRIEF_FUNCTION_ID>
+    options:
+      operationId: optionsBrief
+      x-yc-apigateway-integration:
+        type: dummy
+        http_code: 204
+        http_headers:
+          Access-Control-Allow-Origin: "*"
+          Access-Control-Allow-Methods: "POST, OPTIONS"
+          Access-Control-Allow-Headers: "Content-Type, Authorization"
+        content:
+          text/plain: ""
+
+  /lead-magnet:
+    post:
+      operationId: sendLeadMagnet
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id: <LEAD_MAGNET_FUNCTION_ID>
+    options:
+      operationId: optionsLeadMagnet
+      x-yc-apigateway-integration:
+        type: dummy
+        http_code: 204
+        http_headers:
+          Access-Control-Allow-Origin: "*"
+          Access-Control-Allow-Methods: "POST, OPTIONS"
+          Access-Control-Allow-Headers: "Content-Type, Authorization"
+        content:
+          text/plain: ""

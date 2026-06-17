@@ -91,4 +91,16 @@ import { contacts } from '../../data/contacts';
       {contacts.phone}
     </a>.
   </div>
+
+  <div
+    data-form-error
+    hidden
+    class="mt-5 rounded-2xl border border-red-200 bg-red-50 p-4 text-sm leading-6 text-slate-700"
+  >
+    Не удалось отправить заявку. Проверьте соединение и попробуйте ещё раз или
+    позвоните по телефону
+    <a href={contacts.phoneHref} class="font-semibold text-blue-600">
+      {contacts.phone}
+    </a>.
+  </div>
 </form>

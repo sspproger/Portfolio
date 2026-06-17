@@ -6,12 +6,15 @@ import Footer from './Footer.astro';
 import YandexMetrika from '../analytics/YandexMetrika.astro';
 
 import { metrikaConfig } from '../../data/analytics';
+import { site } from '../../data/site';
 
 const {
   title = 'Автоматизация процессов и цифровые системы',
   description = 'Разработка цифровых систем для автоматизации заявок, документов, файлов, статусов, админ-панелей, личных кабинетов, рассылок и workflow-решений.',
   ogImage = '/og-image.jpg',
 } = Astro.props;
+
+const apiBaseUrl = site.apiBaseUrl;
 ---
 
 <!doctype html>
@@ -29,6 +32,10 @@ const {
     <meta property="og:type" content="website" />
 
     <link rel="icon" href="/favicon.svg" />
+
+    <script is:inline define:vars={{ apiBaseUrl }}>
+      window.__PUBLIC_API_BASE_URL__ = apiBaseUrl;
+    </script>
 
     {metrikaConfig.enabled && <YandexMetrika id={metrikaConfig.id} />}
   </head>
