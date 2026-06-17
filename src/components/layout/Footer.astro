@@ -1,6 +1,15 @@
 ---
 import { navigation } from '../../data/navigation';
 import { contacts } from '../../data/contacts';
+
+const year = new Date().getFullYear();
+
+const importantLinks = [
+  { label: 'Оставить заявку', href: '/request' },
+  { label: 'Услуги', href: '/services' },
+  { label: 'Кейс konkursbstu.ru', href: '/projects/konkursbstu' },
+  { label: 'Контакты', href: '/contacts' },
+];
 ---
 
 <footer class="border-t border-slate-200 bg-white">
@@ -14,18 +23,29 @@ import { contacts } from '../../data/contacts';
         Заявки, документы, файлы, статусы, админ-панели, личные кабинеты,
         рассылки, отчётность и workflow-решения.
       </p>
+
+      <div class="mt-5 grid gap-2">
+        {importantLinks.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-semibold text-blue-600 hover:text-blue-700"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
     </div>
 
     <div>
       <p class="font-semibold text-slate-900">Навигация</p>
 
-      <div class="mt-3 flex flex-col gap-2">
+      <nav class="mt-3 flex flex-col gap-2" aria-label="Навигация в подвале">
         {navigation.map((item) => (
           <a href={item.href} class="text-sm text-slate-600 hover:text-slate-900">
             {item.label}
           </a>
         ))}
-      </div>
+      </nav>
     </div>
 
     <div>
@@ -48,7 +68,7 @@ import { contacts } from '../../data/contacts';
       </div>
 
       <p class="mt-6 text-xs text-slate-500">
-        © 2026. Автоматизация процессов и цифровые системы.
+        © {year}. Автоматизация процессов и цифровые системы.
       </p>
     </div>
   </div>
